@@ -1,22 +1,23 @@
 {
-  "name": "bootstrap",
-  "description": "The most popular front-end framework for developing responsive, mobile first projects on the web.",
-  "version": "3.3.4",
+  "name": "hybridstrap",
+  "description": "Hybridstrap is based on the most popular front-end framework for developing responsive, mobile first projects on the web Boostrap, with a specific focus on hybrid publishing",
+  "version": "0.1",
   "keywords": [
     "css",
     "js",
     "less",
-    "mobile-first",
     "responsive",
     "front-end",
     "framework",
+    "hybrid publishing",
     "web"
   ],
-  "homepage": "http://getbootstrap.com",
+  "homepage": "https://github.com/furter/hybridstrap",
   "main": [
     "less/bootstrap.less",
     "dist/css/bootstrap.css",
     "dist/js/bootstrap.js",
+    "magic-fonts.css",
     "dist/fonts/glyphicons-halflings-regular.eot",
     "dist/fonts/glyphicons-halflings-regular.svg",
     "dist/fonts/glyphicons-halflings-regular.ttf",
