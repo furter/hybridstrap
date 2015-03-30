@@ -38,29 +38,46 @@
 
     <body ng-controller="SpaceCtrl">
         <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <img class="logo img-responsive" src="static/hpc-logoxx.png" alt="hpc-logo">
-                    <h1>Research Viewer</h1>
-                    <p>This repository is the <a href="https://consortium.io">Hybrid Publishing Consortium</a> document collection. Its compiled in a redistributable way.</p>
-
-                    <p> We're hosting this on <a href="https://research.consortium.io">https://research.consortium.io</a>. Get the dossiers and the code on <a href="https://github.com/consortium/hybrid-publishing-research.git">https://github.com/consortium/hybrid-publishing-research.git.</a></p>
-
-                    </p>This site has the git hash: <a ng-href="https://github.com/consortium/hybrid-publishing-research/commit/{{gitinfo.sha}}">{{gitinfo.sha}}</a> on branch: <a ng-href="https://github.com/consortium/hybrid-publishing-research/commits/{{gitinfo.branch}}">{{gitinfo.branch}}</a>.</p>
+            <div class="navbar-header">
+                <img class="logo img-responsive" src="static/hpc-logoxx.png" alt="hpc-logo">
+                <h1>Research<br>Viewer</h1>
+                <div class="more slide_up">
+                    <p>MORE</p>
                 </div>
-            </div>
+                <section id="header_slide">
+                    
+                    <div class="strapline">
+                        <p>The research repository of the Hybrid Publishing Consortium (HPC) supporting Open Source software infrastructures publishing–design, single source, dynamic publishing &amp; Open Access.</p>
+                        <p>This Research Viewer is an example Open Source tool the HPC has made for research distribution.</p>
+                        <p>Source: Publication and software source code on <a href="https://github.com/consortium/hybrid-publishing-research.git">GitHub</a></p>
+                        <p>ID: Publications version: Mon Mar 23 07:57:31 2015 +0100, git hash: 9795c7d97fb0f363a02e22e93d0415cf2b2dc3da.</p>
+                     </div>
+                 </section>
+             </div>
         </div>
         
         <div class="container">
             <div class="row">
-                <div class="col-md-3">
-                    <div class="list-group">
-                        <div ng-show="indexlist" ng-repeat="item in indexlist">
+                <div ng-show="indexlist" ng-repeat="item in indexlist" class="cover-dossier">
+                    <a href="{{item.filename}}" class="list-group-item">
+                        <h3 ng-hide="{{!item.data.title[0].length}}">{{item.data.title[0]}}</h3>
+                        <p ng-hide="{{!item.data.title[1].length}}">{{item.data.title[1]}}</p>
+                        <h3 ng-show="{{!item.data.title[0].length}}">Metadata not available</h3>
+                        <p ng-show="{{!item.data.title[1].length}}">Metadata not available</p>
+                        
+                        <div ng-show="{{item.error.length}}" class="alert alert-danger" role="alert">
+                            <span class="sr-only">Error:</span>
+                             Not html5 conform
+                        </div>
+                    </a>
+                </div>
+                <!-- FAKE ONE -->
+                <div ng-show="indexlist" ng-repeat="item in indexlist" class="cover-dossier">
                             <a href="{{item.filename}}" class="list-group-item">
-                                <h3 ng-hide="{{!item.data.title[0].length}}">{{item.data.title[0]}}</h3>
-                                <p ng-hide="{{!item.data.title[1].length}}">{{item.data.title[1]}}</p>
-                                <h3 ng-show="{{!item.data.title[0].length}}">Metadata not available</h3>
-                                <p ng-show="{{!item.data.title[1].length}}">Metadata not available</p>
+                                <h3 ng-hide="{{!item.data.title[0].length}}">Title</h3>
+                                <p ng-hide="{{!item.data.title[1].length}}">Date</p>
+                                <h3 ng-show="{{!item.data.title[0].length}}">Publication type</h3>
+                                <p ng-show="{{!item.data.title[1].length}}">Author(s) or editor(s)</p>
                                 
                                 <div ng-show="{{item.error.length}}" class="alert alert-danger" role="alert">
                                     <span class="sr-only">Error:</span>
@@ -68,13 +85,24 @@
                                 </div>
                             </a>
                         </div>
-                    </div>
-                </div>
             </div>    
         </div>
-         <div ng-view>
+        <div class="container">
+             <footer>
+                 <div class="contact slide_up">
+                     <p>INFO</p> <img class="logo-footer" src="http://a-machine.net/img/EFRE-logo.png"> <img class="logo-footer" src="http://a-machine.net/img/EuropafoerdertNds_farbig.png"> <img class="logo-footer" src="http://a-machine.net/img/logo_leuphana-2.png">
+                 </div>
+                 <section id="footer_slide">
+                     <p>Contact: mail AT consortium.io</p>
+                     <p>Imprint ( links to http://www.leuphana.de/en/site-notice-leuphana.html )</p>
+                     <p>© The authors | CC BY 3.0 DE</p>
+                     <p>The Hybrid Publishing Consortium is a project of the Hybrid Publishing Lab in collaboration with partners and associates. The Hybrid Publishing Lab is part of the Leuphana University of Lüneburg Innovation Incubator, financed by the European Regional Development Fund and co-funded by the German federal state of Lower Saxony.</p>
+                 </section>
+             </footer>
+        </div>
+        <div ng-view>
              
-         </div>
+        </div>
         <!--
         <div class="row" ng-show="validationstatus">
             <div class="container">
@@ -88,8 +116,23 @@
             </div>
         </div>
         -->
+        
 
         <script src="js/all.min.js"></script>
+        <script src="js/jquery-1.11.2.min.js"></script>
+        <script>
+        $( ".contact" ).click(function() {
+            $( "#footer_slide" ).slideToggle( "slow");
+            $('html, body').animate({
+                scrollTop: $("#footer_slide").offset().top + $('window').height()
+            }, 2000);
+            $( this ).toggleClass( "slide_up" );
+        });
+        $( ".more" ).click(function() {
+            $( "#header_slide" ).slideToggle( "slow");
+            $( this ).toggleClass( "slide_up" );
+        });
+        </script>
     </body>
 
 </html>
