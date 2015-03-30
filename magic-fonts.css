@@ -290,12 +290,12 @@
 
 @font-face {
     font-family: 'Cotham';
-    src: url('CothamSans-webfont.eot');
-    src: url('CothamSans-webfont.eot?#iefix') format('embedded-opentype'),
-         url('CothamSans-webfont.woff2') format('woff2'),
-         url('CothamSans-webfont.woff') format('woff'),
-         url('CothamSans-webfont.ttf') format('truetype'),
-         url('CothamSans-webfont.svg#cotham_sansregular') format('svg');
+    src: url('fonts/CothamSans-webfont.eot');
+    src: url('fonts/CothamSans-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/CothamSans-webfont.woff2') format('woff2'),
+         url('fonts/CothamSans-webfont.woff') format('woff'),
+         url('fonts/CothamSans-webfont.ttf') format('truetype'),
+         url('fonts/CothamSans-webfont.svg#cotham_sansregular') format('svg');
     font-weight: normal;
     font-style: normal;
 
